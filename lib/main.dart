@@ -4,6 +4,7 @@ import 'package:meals_menu/models/category.dart';
 import 'package:meals_menu/models/meal.dart';
 import 'package:meals_menu/screens/category_meals_screen.dart';
 import 'package:meals_menu/screens/home_screen.dart';
+import 'package:meals_menu/screens/meal_details_screen.dart';
 
 void main(List<String> args) {
   runApp(MyApp());
@@ -24,8 +25,9 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         CategoryMealsScreen.routeName: (context) => CategoryMealsScreen(),
+        MealDetailsScreen.routeName: (context) => MealDetailsScreen(),
       },
-      home: HomeScreen(categories: _categories.list,meals:_meals.list),
+      home: HomeScreen(categories: _categories.list, meals: _meals.list),
     );
   }
 }
