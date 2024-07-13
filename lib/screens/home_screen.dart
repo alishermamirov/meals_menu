@@ -1,7 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:meals_menu/models/category.dart';
+import 'package:meals_menu/widgets/category_item.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final List<category> categories;
+  const HomeScreen({
+    Key? key,
+    required this.categories,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,36 +18,20 @@ class HomeScreen extends StatelessWidget {
         title: Text("Ovqatlar menyusi"),
       ),
       body: GridView(
+        padding: EdgeInsets.all(8),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
           childAspectRatio: 3 / 2,
           mainAxisSpacing: 20,
           crossAxisSpacing: 20,
         ),
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-            child: Stack(
-              children: [
-                Container(
-                  color: Colors.amber,
-                  width: double.infinity,
-                  child: Image.asset(
-                    "assets/images/burger.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Fast food",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ],
+        children: categories
+            .map(
+              (category) => CategoryItem(
+                Category: category,
+              ),
+            )
+            .toList(),
       ),
     );
   }
