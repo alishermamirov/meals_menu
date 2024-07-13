@@ -1,13 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:meals_menu/models/category.dart';
+import 'package:meals_menu/models/meal.dart';
 import 'package:meals_menu/widgets/category_item.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<category> categories;
+  final List<Meal> meals;
   const HomeScreen({
     Key? key,
     required this.categories,
+    required this.meals,
   }) : super(key: key);
 
   @override
@@ -27,9 +31,12 @@ class HomeScreen extends StatelessWidget {
         ),
         children: categories
             .map(
-              (category) => CategoryItem(
-                Category: category,
-              ),
+              (category) {
+                final categoryMeal=meals.where((element) => element.categoryId==category.id,).toList();
+               return CategoryItem(
+                Category: category,categoryMeal:categoryMeal
+              );
+              }
             )
             .toList(),
       ),
