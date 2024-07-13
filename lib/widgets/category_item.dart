@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:meals_menu/models/category.dart';
+import 'package:meals_menu/screens/category_meals_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   final category Category;
@@ -10,34 +11,45 @@ class CategoryItem extends StatelessWidget {
     required this.Category,
   }) : super(key: key);
 
+  void _gotoCategoryMealsScreen(BuildContext context) {
+    //   Navigator.of(context).push(MaterialPageRoute(
+    //     builder: (context) => CategoryMealsScreen(),
+    //   ));
+
+    Navigator.of(context).pushNamed(CategoryMealsScreen.routeName,arguments: Category.title);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.all(Radius.circular(20)),
-      child: Stack(
-        children: [
-          Container(
-            color: Colors.amber,
-            width: double.infinity,
-            child: Image.asset(
-              Category.imageurl,
-              fit: BoxFit.cover,
+    return InkWell(
+      onTap: () => _gotoCategoryMealsScreen(context),
+      child: ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        child: Stack(
+          children: [
+            Container(
+              color: Colors.amber,
+              width: double.infinity,
+              child: Image.asset(
+                Category.imageurl,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          Container(
-            color: Colors.black.withOpacity(0.4),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              Category.title,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
+            Container(
+              color: Colors.black.withOpacity(0.4),
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                Category.title,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
