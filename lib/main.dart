@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:meals_menu/models/category.dart';
 import 'package:meals_menu/models/meal.dart';
 import 'package:meals_menu/screens/category_meals_screen.dart';
+import 'package:meals_menu/screens/categories_screen.dart';
 import 'package:meals_menu/screens/home_screen.dart';
 import 'package:meals_menu/screens/meal_details_screen.dart';
 
