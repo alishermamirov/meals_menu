@@ -8,11 +8,15 @@ import 'package:meals_menu/screens/favorites_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final List<category> categories;
-  final List<Meal> meals;
-   HomeScreen({
+  final Meals mealModel;
+  final Function toggleLike;
+  final Function isFavorite;
+  HomeScreen({
     Key? key,
     required this.categories,
-    required this.meals,
+    required this.mealModel,
+    required this.toggleLike,
+    required this.isFavorite,
   }) : super(key: key);
 
   @override
@@ -28,11 +32,13 @@ class _HomeScreenState extends State<HomeScreen> {
     _pages = [
       {
         "page": CategoriesScreen(
-            categories: widget.categories, meals: widget.meals),
+            categories: widget.categories,
+            meals: widget.mealModel.list,
+            ),
         "title": "Ovqatlar menyusi",
       },
       {
-        "page": const FavoritesScreen(),
+        "page":  FavoritesScreen(favorites: widget.mealModel.favorites, toggleLike: widget.toggleLike, isFavorite: widget.isFavorite),
         "title": "Sevimli",
       },
     ];

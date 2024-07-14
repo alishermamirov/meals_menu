@@ -7,7 +7,6 @@ class Meal {
   final double price;
   final String categoryId;
   final List<String> ingredients;
-  bool isLike;
 
   Meal({
     required this.id,
@@ -18,7 +17,6 @@ class Meal {
     required this.price,
     required this.categoryId,
     required this.ingredients,
-     this.isLike=false,
   });
 }
 
@@ -140,4 +138,24 @@ class Meals {
     return _list;
   }
 
+  List<Meal> _favorites = [];
+
+  List<Meal> get favorites {
+    return _favorites;
+  }
+
+  void toggleLike(String id) {
+    final index = _favorites.indexWhere(
+      (element) => element.id == id,
+    );
+    if (index < 0) {
+      _favorites.add(_list.firstWhere(
+        (element) => element.id == id,
+      ));
+    } else {
+      _favorites.removeWhere(
+        (element) => element.id == id,
+      );
+    }
+  }
 }

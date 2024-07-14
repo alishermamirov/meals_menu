@@ -32,7 +32,7 @@ class CategoriesScreen extends StatelessWidget {
                   )
                   .toList();
               return CategoryItem(
-                  Category: category, categoryMeal: categoryMeal);
+                  Category: category, categoryMeal: categoryMeal,);
             }).toList(),
           )
         : Center(

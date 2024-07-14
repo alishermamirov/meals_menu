@@ -8,10 +8,12 @@ import 'package:meals_menu/screens/category_meals_screen.dart';
 class CategoryItem extends StatelessWidget {
   final category Category;
   final List<Meal> categoryMeal;
+  
   const CategoryItem({
     Key? key,
     required this.Category,
     required this.categoryMeal,
+    
   }) : super(key: key);
 
   void _gotoCategoryMealsScreen(BuildContext context) {
@@ -22,6 +24,7 @@ class CategoryItem extends StatelessWidget {
     Navigator.of(context).pushNamed(CategoryMealsScreen.routeName, arguments: {
       "categorytitle": Category.title,
       "meals": categoryMeal,
+      
     });
   }
 
