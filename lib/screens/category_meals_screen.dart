@@ -23,12 +23,18 @@ class CategoryMealsScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(data["categorytitle"]),
       ),
-      body: ListView.builder(
-        padding: EdgeInsets.all(8),
-        itemCount: data["meals"].length,
-        itemBuilder: (context, index) =>
-            MealItem(meal: data["meals"][index], toggleLike: toggleLike,isFavorite:isFavorite),
-      ),
+      body: data["meals"].isEmpty
+          ? Center(
+              child: Text("Mahsulot mavjud emas"),
+            )
+          : ListView.builder(
+              padding: EdgeInsets.all(8),
+              itemCount: data["meals"].length,
+              itemBuilder: (context, index) => MealItem(
+                  meal: data["meals"][index],
+                  toggleLike: toggleLike,
+                  isFavorite: isFavorite),
+            ),
     );
   }
 }
