@@ -36,7 +36,9 @@ class ProductScreen extends StatelessWidget {
           final meal = meals[index];
           return ListTile(
             leading: CircleAvatar(
-              backgroundImage: AssetImage(meal.imageUrls[0]),
+              backgroundImage: meal.imageUrls[0].contains("http")
+                  ? NetworkImage(meal.imageUrls[0])
+                  : AssetImage(meal.imageUrls[0]),
             ),
             title: Text(meal.title),
             subtitle: Text("${meal.price} so'm"),

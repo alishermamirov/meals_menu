@@ -158,4 +158,8 @@ class Meals {
       );
     }
   }
+
+  void addNewMeal(Meal meal) {
+    _list.add(meal);
+  }
 }

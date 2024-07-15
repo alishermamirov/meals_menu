@@ -36,6 +36,10 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  void addNewMeal(Meal meal) {
+    _meals.addNewMeal(meal);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -56,8 +60,7 @@ class _MyAppState extends State<MyApp> {
             toggleLike: toggleLike,
             isFavorite: isFavorite),
         AddNewProductScreen.routeName: (context) => AddNewProductScreen(
-              Categories: _categories.list,
-            ),
+            Categories: _categories.list, addNewMeal: addNewMeal),
       },
       home: HomeScreen(
         categories: _categories.list,

@@ -41,10 +41,15 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
                 builder: (BuildContext context) {
                   return SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    child: Image.asset(
-                      image,
-                      fit: BoxFit.cover,
-                    ),
+                    child: image.contains("http")
+                        ? Image.network(
+                            image,
+                            fit: BoxFit.cover,
+                          )
+                        : Image.asset(
+                            image,
+                            fit: BoxFit.cover,
+                          ),
                   );
                 },
               );
@@ -58,7 +63,8 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
                 return Container(
                   height: 8,
                   width: 8,
-                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: activeImageIndex == imageIndex
