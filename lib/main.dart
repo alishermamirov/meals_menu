@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meals_menu/models/category.dart';
 import 'package:meals_menu/models/meal.dart';
+import 'package:meals_menu/screens/add_new_product_screen.dart';
 import 'package:meals_menu/screens/category_meals_screen.dart';
 import 'package:meals_menu/screens/home_screen.dart';
 import 'package:meals_menu/screens/meal_details_screen.dart';
@@ -46,13 +47,17 @@ class _MyAppState extends State<MyApp> {
         CategoryMealsScreen.routeName: (context) =>
             CategoryMealsScreen(isFavorite: isFavorite, toggleLike: toggleLike),
         MealDetailsScreen.routeName: (context) => MealDetailsScreen(),
-        ProductScreen.routeName: (context) => ProductScreen(),
+        ProductScreen.routeName: (context) => ProductScreen(
+              meals: _meals.list,
+            ),
         HomeScreen.routeName: (context) => HomeScreen(
-              categories: _categories.list,
-              mealModel: _meals,
-              toggleLike: toggleLike,
-              isFavorite: isFavorite,
-            )
+            categories: _categories.list,
+            mealModel: _meals,
+            toggleLike: toggleLike,
+            isFavorite: isFavorite),
+        AddNewProductScreen.routeName: (context) => AddNewProductScreen(
+              Categories: _categories.list,
+            ),
       },
       home: HomeScreen(
         categories: _categories.list,
