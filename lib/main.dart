@@ -5,6 +5,7 @@ import 'package:meals_menu/models/meal.dart';
 import 'package:meals_menu/screens/category_meals_screen.dart';
 import 'package:meals_menu/screens/home_screen.dart';
 import 'package:meals_menu/screens/meal_details_screen.dart';
+import 'package:meals_menu/screens/product_screen.dart';
 
 void main(List<String> args) {
   runApp(MyApp());
@@ -45,6 +46,13 @@ class _MyAppState extends State<MyApp> {
         CategoryMealsScreen.routeName: (context) =>
             CategoryMealsScreen(isFavorite: isFavorite, toggleLike: toggleLike),
         MealDetailsScreen.routeName: (context) => MealDetailsScreen(),
+        ProductScreen.routeName: (context) => ProductScreen(),
+        HomeScreen.routeName: (context) => HomeScreen(
+              categories: _categories.list,
+              mealModel: _meals,
+              toggleLike: toggleLike,
+              isFavorite: isFavorite,
+            )
       },
       home: HomeScreen(
         categories: _categories.list,

@@ -5,6 +5,7 @@ import 'package:meals_menu/models/category.dart';
 import 'package:meals_menu/models/meal.dart';
 import 'package:meals_menu/screens/categories_screen.dart';
 import 'package:meals_menu/screens/favorites_screen.dart';
+import 'package:meals_menu/widgets/main_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   final List<category> categories;
@@ -18,6 +19,8 @@ class HomeScreen extends StatefulWidget {
     required this.toggleLike,
     required this.isFavorite,
   }) : super(key: key);
+  
+  static const routeName = "home";
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -32,13 +35,16 @@ class _HomeScreenState extends State<HomeScreen> {
     _pages = [
       {
         "page": CategoriesScreen(
-            categories: widget.categories,
-            meals: widget.mealModel.list,
-            ),
+          categories: widget.categories,
+          meals: widget.mealModel.list,
+        ),
         "title": "Ovqatlar menyusi",
       },
       {
-        "page":  FavoritesScreen(favorites: widget.mealModel.favorites, toggleLike: widget.toggleLike, isFavorite: widget.isFavorite),
+        "page": FavoritesScreen(
+            favorites: widget.mealModel.favorites,
+            toggleLike: widget.toggleLike,
+            isFavorite: widget.isFavorite),
         "title": "Sevimli",
       },
     ];
@@ -54,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MainDrawer(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(_pages[activeIndex]["title"]),
