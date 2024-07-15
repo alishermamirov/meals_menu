@@ -40,6 +40,10 @@ class _MyAppState extends State<MyApp> {
     _meals.addNewMeal(meal);
   }
 
+  void deleteMeal(String id){
+    _meals.deleteMeal(id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,7 +56,7 @@ class _MyAppState extends State<MyApp> {
             CategoryMealsScreen(isFavorite: isFavorite, toggleLike: toggleLike),
         MealDetailsScreen.routeName: (context) => MealDetailsScreen(),
         ProductScreen.routeName: (context) => ProductScreen(
-              meals: _meals.list,
+              meals: _meals.list,deleteMeal:deleteMeal
             ),
         HomeScreen.routeName: (context) => HomeScreen(
             categories: _categories.list,

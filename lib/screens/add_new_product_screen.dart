@@ -78,7 +78,7 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
         ingredients: ingreds,
       ),
     );
-    Navigator.of(context).pop();
+    Navigator.of(context).pop(true);
   }
 
   @override
